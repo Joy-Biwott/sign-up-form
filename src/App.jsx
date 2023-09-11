@@ -21,21 +21,29 @@ export default function App() {
       email: "",
       password: "",
       confirmPassword: "",
-      okayToEmail: false
+      okayToEmail: true
     })
-    
+
     function handleSubmit(event) {
         event.preventDefault()
-    }
+        if(formData.password === formData.passwordConfirm) {
+          console.log("Successfully signed up")
+      } else {
+          console.log("Passwords do not match")
+      }
+      
+      if(formData.okayToEmail) {
+          console.log("Thanks for signing up for our newsletter!")
+      }
+  }
+ 
     
     function handleChange(e){
       const {name, value, type, checked} = e.target
-      setFormData((prevFormData) => {
-        return {
+      setFormData((prevFormData) => ({
                 ...prevFormData,
                 [name] : type === "checkbox" ? checked : value
-        }
-      })
+      }))
     }
     return (
         <div className="form-container">
@@ -48,6 +56,7 @@ export default function App() {
                     className="form--input"
                     onChange={handleChange}
                 />
+            
                 <input 
                     name="password"
                     type="password" 
@@ -85,3 +94,8 @@ export default function App() {
         </div>
     )
 }
+
+
+
+
+
