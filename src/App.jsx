@@ -26,7 +26,7 @@ export default function App() {
 
     function handleSubmit(event) {
         event.preventDefault()
-        if(formData.password === formData.passwordConfirm) {
+        if(formData.password === formData.confirmPassword) {
           console.log("Successfully signed up")
       } else {
           console.log("Passwords do not match")
